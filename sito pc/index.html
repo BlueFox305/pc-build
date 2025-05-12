@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Builder - Configura il tuo PC ideale</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-desktop"></i>
+                <h1>PC Builder</h1>
+            </div>
+            <p class="tagline">Configura il tuo PC ideale in pochi click</p>
+        </header>
+
+        <main>
+            <div class="configurator-card">
+                <div class="card-header">
+                    <h2>Inizia la tua configurazione</h2>
+                    <p>Rispondi a poche domande e ti suggeriremo i componenti perfetti per te</p>
+                </div>
+                
+                <form id="pc-form">
+                    <div class="form-step active" id="step1">
+                        <h3>Qual è il tuo budget?</h3>
+                        <div class="budget-input">
+                            <span class="currency">€</span>
+                            <input type="number" id="budget" min="100" placeholder="Minimo 100€" required>
+                        </div>
+                        <p class="hint">Il budget minimo è di 100€. Potremmo superare il budget indicato di massimo 50€ per offrirti la configurazione migliore.</p>
+                        <div class="button-container">
+                            <button type="button" class="next-btn" id="step1-next">Avanti <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step2">
+                        <h3>Per cosa userai principalmente il PC?</h3>
+                        <div class="usage-options">
+                            <div class="option">
+                                <input type="radio" id="usage-work" name="usage" value="work" required>
+                                <label for="usage-work">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Lavoro / Scuola</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="usage-gaming" name="usage" value="gaming">
+                                <label for="usage-gaming">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Gaming</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="back-btn" id="step2-back"><i class="fas fa-arrow-left"></i> Indietro</button>
+                            <button type="button" class="next-btn" id="step2-next">Avanti <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step3">
+                        <h3>Quanta potenza ti serve?</h3>
+                        <div class="power-options">
+                            <div class="option">
+                                <input type="radio" id="power-highest" name="power" value="moltissima" required>
+                                <label for="power-highest">
+                                    <i class="fas fa-bolt"></i><i class="fas fa-bolt"></i><i class="fas fa-bolt"></i>
+                                    <span>Moltissima</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="power-high" name="power" value="molta">
+                                <label for="power-high">
+                                    <i class="fas fa-bolt"></i><i class="fas fa-bolt"></i>
+                                    <span>Molta</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="power-medium" name="power" value="normale">
+                                <label for="power-medium">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Normale</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="power-low" name="power" value="non tanta">
+                                <label for="power-low">
+                                    <i class="fas fa-battery-half"></i>
+                                    <span>Non tanta</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="power-lowest" name="power" value="poca">
+                                <label for="power-lowest">
+                                    <i class="fas fa-battery-quarter"></i>
+                                    <span>Poca</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="back-btn" id="step3-back"><i class="fas fa-arrow-left"></i> Indietro</button>
+                            <button type="button" class="submit-btn" id="generate-btn">Genera configurazione <i class="fas fa-cog"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="results-card" id="results-section">
+                <div class="card-header">
+                    <h2>La tua configurazione ideale</h2>
+                    <p>Ecco i componenti che abbiamo selezionato per te</p>
+                </div>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Stiamo configurando il tuo PC ideale...</p>
+                </div>
+                <div class="components-list" id="components-list">
+                    <!-- I componenti verranno inseriti qui dinamicamente -->
+                </div>
+                <div class="total-price">
+                    <h3>Prezzo totale: <span id="total-price">€0</span></h3>
+                    <p class="budget-info">Budget iniziale: <span id="initial-budget">€0</span></p>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="restart-btn" id="restart-btn"><i class="fas fa-redo"></i> Ricomincia</button>
+                    <button type="button" class="save-btn" id="save-btn"><i class="fas fa-save"></i> Salva configurazione</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 PC Builder - Tutti i diritti riservati</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
